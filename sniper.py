@@ -44,16 +44,23 @@ while 1:
                 print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                 print("[+] Bot is ready")
                 ready = True
-            if ('giveaway' in str(ctx.content).lower() and 'react with' in str(
-                    ctx.content).lower()) or '**GIVEAWAY**' in ctx.content:
-                emote = "🎉"
+            if ('**giveaway**' in str(ctx.content).lower() or ('react with' in str(
+                    ctx.content).lower() and 'giveaway' in str(ctx.content).lower())):
+                #emote = "🎉"
+                #try:
+                #    emote = re.search("React with (.*) ", ctx.content).group(1)
+                #except:
+                #    emote = "🎉"
                 try:
-                    emote = re.search("React with (.*) ", ctx.content).group(1)
-                except:
-                    emote = "🎉"
-                try:
-                    await asyncio.sleep(randint(2, 8))
-                    await ctx.add_reaction(emote)
+                    #try:
+                    #    toJoin = re.search("https://discord.gg/(.*) ", ctx.content).group(1)
+                    #    r = requests
+                    #    r.post('https://discordapp.com/api/v6/invites/invitecode' + toJoin,
+                    #           json={"channel_id": str(ctx.channel.id)}, headers={'authorization': token}).text()
+                    #except:
+                    #    pass
+                    await asyncio.sleep(randint(10, 20))
+                    await ctx.add_reaction("🎉")
                     print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                     print(
                         Fore.LIGHTYELLOW_EX + "[-] Enter Giveaway " + Fore.LIGHTMAGENTA_EX + " [" + ctx.guild.name + " > " + ctx.channel.name + "]" + Fore.RESET)
@@ -62,7 +69,8 @@ while 1:
                     print(
                         Fore.LIGHTYELLOW_EX + "[x] Failed to enter Giveaway " + Fore.LIGHTMAGENTA_EX + " [" + ctx.guild.name + " > " + ctx.channel.name + "]" + Fore.RESET)
             elif '<@198484790427516929>' in ctx.content and (
-                    'giveaway' in str(ctx.content).lower() or 'won' in ctx.content):
+                    'giveaway' in str(ctx.content).lower() or 'won' in ctx.content or 'winner' in str(
+                ctx.content).lower()):
                 print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                 try:
                     won = re.search("You won the \*\*(.*)\*\*", ctx.content).group(1)
@@ -73,9 +81,9 @@ while 1:
             elif 'discordapp.com/gifts/' in ctx.content or 'discord.gift/' in ctx.content:
                 print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                 try:
-                    code = re.search("discordapp.com/gifts/(.*)", ctx.content).group(1)
+                    code = re.search("discordapp.com/gifts/([a-zA-Z0-9_]+)", ctx.content).group(1)
                 except:
-                    code = re.search("discord.gift/(.*)", ctx.content).group(1)
+                    code = re.search("discord.gift/([a-zA-Z0-9]+)", ctx.content).group(1)
                 start_time = time.time()
                 if len(code) != 16:
                     print(
@@ -85,7 +93,6 @@ while 1:
                     result = r.post('https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                                     json={"channel_id": str(ctx.channel.id)}, headers={'authorization': token}).text
                     delay = (time.time() - start_time)
-
                     print(
                         Fore.LIGHTGREEN_EX + "[-] Snipped code: " + Fore.LIGHTRED_EX + code + Fore.RESET + " From " + ctx.author.name + "#" + ctx.author.discriminator + Fore.LIGHTMAGENTA_EX + " [" + ctx.guild.name + " > " + ctx.channel.name + "]" + Fore.RESET)
                     if 'This gift has been redeemed already.' in result:
@@ -107,3 +114,4 @@ while 1:
         file.write(traceback.format_exc())
         file.close()
         exit(0)
+
