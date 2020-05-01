@@ -68,7 +68,7 @@ while 1:
                     print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                     print(
                         Fore.LIGHTYELLOW_EX + "[x] Failed to enter Giveaway " + Fore.LIGHTMAGENTA_EX + " [" + ctx.guild.name + " > " + ctx.channel.name + "]" + Fore.RESET)
-            elif '<@198484790427516929>' in ctx.content and (
+            elif '<@' + str(bot.user.id) + '>' in ctx.content and (
                     'giveaway' in str(ctx.content).lower() or 'won' in ctx.content or 'winner' in str(
                 ctx.content).lower()):
                 print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
