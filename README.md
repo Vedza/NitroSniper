@@ -1,2 +1,4 @@
 # NitroSniper
-Discord Nitro sniper ad Giveaway joiner 
+Discord Nitro sniper and Giveaway joiner 
+
+![Screenshot](screenshot.png)
