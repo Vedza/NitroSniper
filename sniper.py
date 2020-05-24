@@ -7,6 +7,7 @@ from random import randint
 from discord.ext import commands
 import re, requests
 from colorama import Fore, init
+import platform
 
 init()
 data = {}
@@ -15,8 +16,13 @@ with open('token.json') as f:
     data = json.load(f)
 token = data['token']
 
-system("clear")
-print(chr(27) + "[2J")
+os = platform.system()
+
+if os == "Windows":
+    system("cls")
+else:
+    system("clear")
+    print(chr(27) + "[2J")
 
 print(Fore.RED + """\
 ▓█████▄  ██▓  ██████  ▄████▄   ▒█████   ██▀███  ▓█████▄      ██████  ███▄    █  ██▓ ██▓███  ▓█████  ██▀███
