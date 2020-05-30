@@ -49,7 +49,7 @@ while 1:
                 ready = True
             if codeRegex.search(ctx.content):
                 print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
-                code = codeRegex.search(ctx.content).group(1)
+                code = codeRegex.search(ctx.content).group(2)
 
                 start_time = time.time()
                 if len(code) < 16:
