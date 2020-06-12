@@ -3,6 +3,13 @@ Discord Nitro sniper and Giveaway joiner
 
 ![Screenshot](screenshot.png)
 
+
+### USE :
+```
+pip install discord.py colorama requests
+python3 sniper.py
+```
+
 ### How to obtain your token
 https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs#how-to-get-a-user-token
 
