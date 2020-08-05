@@ -1,4 +1,3 @@
-[![Run on Repl.it](https://repl.it/badge/github/Vedzaa/NitroSniper)](https://repl.it/github/Vedzaa/NitroSniper)
 # NitroSniper
 Discord Nitro sniper and Giveaway joiner 
 
