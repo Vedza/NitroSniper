@@ -6,8 +6,8 @@ Discord Nitro sniper and Giveaway joiner
 
 ### USE :
 ```
-pip install discord.py colorama requests
-python3 sniper.py
+python3.8 -m pip install httpx discord.py colorama
+python3.8 sniper.py
 ```
 
 ### How to obtain your token

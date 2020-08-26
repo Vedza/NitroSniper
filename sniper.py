@@ -5,7 +5,8 @@ import traceback
 from os import system
 from random import randint
 from discord.ext import commands
-import re, requests
+import re
+import httpx
 from colorama import Fore, init
 import platform
 
@@ -67,25 +68,27 @@ while 1:
                             Fore.LIGHTRED_EX + "[=] Auto-detected a fake code: " + code + " From " + ctx.author.name + "#" + ctx.author.discriminator + Fore.RESET)
 
                 else:
-                    r = requests
-                    result = r.post('https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
-                                    json={"channel_id": str(ctx.channel.id)}, headers={'authorization': token}).text
-                    delay = (time.time() - start_time)
-                    try:
-                        print(
-                            Fore.LIGHTGREEN_EX + "[-] Sniped code: " + Fore.LIGHTRED_EX + code + Fore.RESET + " From " + ctx.author.name + "#" + ctx.author.discriminator + Fore.LIGHTMAGENTA_EX + " [" + ctx.guild.name + " > " + ctx.channel.name + "]" + Fore.RESET)
-                    except:
-                        print(
-                            Fore.LIGHTGREEN_EX + "[-] Sniped code: " + Fore.LIGHTRED_EX + code + Fore.RESET + " From " + ctx.author.name + "#" + ctx.author.discriminator + Fore.RESET)
+                    async with httpx.AsyncClient() as client:
+                        result = await client.post(
+                            'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
+                            json={'channel_id': str(ctx.channel.id)},
+                            headers={'authorization': token, 'user-agent': 'Mozilla/5.0'})
+                        delay = (time.time() - start_time)
+                        try:
+                            print(
+                                Fore.LIGHTGREEN_EX + "[-] Sniped code: " + Fore.LIGHTRED_EX + code + Fore.RESET + " From " + ctx.author.name + "#" + ctx.author.discriminator + Fore.LIGHTMAGENTA_EX + " [" + ctx.guild.name + " > " + ctx.channel.name + "]" + Fore.RESET)
+                        except:
+                            print(
+                                Fore.LIGHTGREEN_EX + "[-] Sniped code: " + Fore.LIGHTRED_EX + code + Fore.RESET + " From " + ctx.author.name + "#" + ctx.author.discriminator + Fore.RESET)
 
-                    if 'This gift has been redeemed already.' in result:
+                    if 'This gift has been redeemed already' in str(result.content):
                         print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                         print(Fore.LIGHTYELLOW_EX + "[-] Code has been already redeemed" + Fore.RESET,
                               end='')
-                    elif 'nitro' in result:
+                    elif 'nitro' in str(result.content):
                         print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                         print(Fore.GREEN + "[+] Code applied" + Fore.RESET, end='')
-                    elif 'Unknown Gift Code' in result:
+                    elif 'Unknown Gift Code' in str(result.content):
                         print(Fore.LIGHTBLUE_EX + time.strftime("%H:%M:%S ", time.localtime()) + Fore.RESET, end='')
                         print(Fore.LIGHTRED_EX + "[-] Invalid Code" + Fore.RESET, end=' ')
                     print(" Delay:" + Fore.GREEN + " %.3fs" % delay + Fore.RESET)
