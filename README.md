@@ -13,7 +13,7 @@ python3.8 sniper.py
 ### How to obtain your token
 https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs#how-to-get-a-user-token
 
-You should also check my other Nitro Sniper in Go, which is way faster than this version !
+You should use my other Nitro Sniper in Go, which is way faster than this version and have more features !
 https://github.com/Vedzaa/NitroSniperGo
 
 ### Disclaimer
