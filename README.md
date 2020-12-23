@@ -1,6 +1,8 @@
 # NitroSniper
 Discord Nitro sniper and Giveaway joiner 
 
+> :warning: **I made a better and faster sniper that you should use instead https://github.com/Vedza/NitroSniperGo**
+
 ![Screenshot](screenshot.png)
 
 
@@ -13,8 +15,6 @@ python3.8 sniper.py
 ### How to obtain your token
 https://github.com/Tyrrrz/DiscordChatExporter/wiki/Obtaining-Token-and-Channel-IDs#how-to-get-a-user-token
 
-You should use my other Nitro Sniper in Go, which is way faster than this version and have more features !
-https://github.com/Vedzaa/NitroSniperGo
 
 ### Disclaimer
 This can get your account banned if you run multiple instance at the same time and/or claim too much Nitros in a too short amount of time. Use it at your own risks.
