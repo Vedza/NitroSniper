@@ -1,4 +1,6 @@
 # NitroSniper
+
+[![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Vedza/NitroSniper&title=Views)](https://github.com/Vedza/NitroSniperGo)                    
 Discord Nitro sniper and Giveaway joiner 
 
 > :warning: **I made a better and faster sniper that you should use instead https://github.com/Vedza/NitroSniperGo**
